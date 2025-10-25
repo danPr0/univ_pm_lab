@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block title %}Movie Catalog{% endblock %}
+{% block content %}
+{#    {% if user %}#}
+{#         <h1>Welcome, {{ user.full_name }}!</h1>#}
+{#        <p><a href="{{ url_for('logout') }}">Logout</a></p>#}
+{#    {% else %}#}
+{#        <p><a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a></p>#}
+{#    {% endif %}#}
+
+    <h1>🎬 Movie Catalog</h1>
+
+    {% if user %}
+        <p style="text-align: center;">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+    {% else %}
+        <p style="text-align: center;">
+            <a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a> to save your
+            favorites.
+        </p>
+    {% endif %}
+
+    {% if movies %}
+        <table class="movie-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Studio</th>
+                <th>Duration (min)</th>
+                <th>Rating</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.id }}</td>
+                    <td>{{ movie.name }}</td>
+                    <td>{{ movie.date.year if movie.date else '' }}</td>
+                    <td>{{ movie.director or '-' }}</td>
+                    <td>{{ movie.studio or '-' }}</td>
+                    <td>{{ movie.duration or '-' }}</td>
+                    <td>{{ movie.rating or '-' }}</td>
+                    <td>{{ movie.description[:120] ~ ('...' if movie.description|length > 120 else '') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="text-align: center;">The films are not yet in the database.</p>
+    {% endif %}
+{% endblock %}
