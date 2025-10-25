@@ -19,14 +19,25 @@ h1, h2 {
   color: #333;
 }
 
-form {
+/* Auth forms container - narrower width */
+.auth-container {
+  max-width: 400px;
+  margin: 80px auto;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Form styles */
+.auth-form {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-input[type="text"],
-input[type="password"] {
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -34,26 +45,27 @@ input[type="password"] {
   transition: border-color 0.2s ease;
 }
 
-input:focus {
+.auth-form input:focus {
   outline: none;
   border-color: #007bff;
 }
 
-/*button {*/
-/*  background: #007bff;*/
-/*  color: white;*/
-/*  padding: 10px;*/
-/*  border: none;*/
-/*  border-radius: 8px;*/
-/*  cursor: pointer;*/
-/*  font-size: 16px;*/
-/*  transition: background 0.2s ease;*/
-/*}*/
+.auth-form .btn {
+  background: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
 
-/*button:hover {*/
-/*  background: #0056b3;*/
-/*}*/
+.auth-form .btn:hover {
+  background: #0056b3;
+}
 
+/* General paragraph and link styles */
 p {
   text-align: center;
   margin-top: 10px;
@@ -68,6 +80,7 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Flash messages */
 .flash {
   background: #ffe5e5;
   color: #b20000;
@@ -75,4 +88,19 @@ a:hover {
   border-radius: 8px;
   margin-bottom: 10px;
   text-align: center;
+}
+
+/* User info paragraph */
+.user-info {
+  text-align: center;
+  color: #555;
+  margin: 10px 0 20px 0;
+}
+
+/* Empty state message */
+.empty-state {
+  text-align: center;
+  color: #666;
+  padding: 40px;
+  font-size: 16px;
 }

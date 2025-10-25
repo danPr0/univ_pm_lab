@@ -94,6 +94,25 @@ def login():
     return render_template('login.html')
 
 
+@app.route('/recommendations')
+def recommendations():
+    user_id = session.get('user_id')
+    if not user_id:
+        flash('Please login to view your recommendations.', 'error')
+        return redirect(url_for('login'))
+
+    user = User.query.get(user_id)
+
+    # Get movies from user's watchlist
+    liked_movies = db.session.query(Movie).join(
+        Watchlist, Movie.id == Watchlist.movie_id
+    ).filter(Watchlist.user_id == user_id).order_by(
+        Movie.date.desc().nullslast()
+    ).all()
+
+    return render_template('recommendations.html', user=user, movies=liked_movies)
+
+
 @app.route('/logout')
 def logout():
     session.pop('user_id', None)
