@@ -74,6 +74,10 @@
   border-bottom: none;
 }
 
+.movie-table__description-cell {
+  width: 50%;
+}
+
 /* Like button styles */
 .like-btn {
   background: none;
