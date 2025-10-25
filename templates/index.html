@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 {% block title %}Movie Catalog{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('index') }}" class="active">Catalog</a></li>
+        {% if user %}
+        <li><a href="{{ url_for('recommendations') }}">Recommendations</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
+
 {% block content %}
     <h1>🎬 Movie Catalog</h1>
 
     {% if user %}
-        <p style="text-align: center;">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+        <p class="user-info">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
     {% else %}
-        <p style="text-align: center;">
+        <p class="user-info">
             <a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a> to save your
             favorites.
         </p>
@@ -54,7 +66,7 @@
             </tbody>
         </table>
     {% else %}
-        <p style="text-align: center;">The films are not yet in the database.</p>
+        <p class="empty-state">The films are not yet in the database.</p>
     {% endif %}
 
     <script>

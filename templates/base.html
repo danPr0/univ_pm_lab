@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %} - My App</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='movies.css') }}">
 </head>
 <body>
-<div class="container">
+<div class="{% block container_class %}container{% endblock %}">
+    {% block navbar %}{% endblock %}
+
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div class="flash">

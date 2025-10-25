@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Recommendations{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('index') }}">Catalog</a></li>
+        <li><a href="{{ url_for('recommendations') }}" class="active">Recommendations</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+    <h1>🎯 Your Recommendations</h1>
+
+    <p class="user-info">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+    {% if movies %}
+        <p class="user-info">Based on your liked movies, we'll recommend similar films you might enjoy!</p>
+
+        <table class="movie-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Studio</th>
+                <th>Duration (min)</th>
+                <th>Rating</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.id }}</td>
+                    <td>{{ movie.name }}</td>
+                    <td>{{ movie.date.year if movie.date else '' }}</td>
+                    <td>{{ movie.director or '-' }}</td>
+                    <td>{{ movie.studio or '-' }}</td>
+                    <td>{{ movie.duration or '-' }}</td>
+                    <td>{{ movie.rating or '-' }}</td>
+                    <td>{{ movie.description[:120] ~ ('...' if movie.description|length > 120 else '') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="empty-state">
+            You haven't liked any movies yet!
+            <br><br>
+            <a href="{{ url_for('index') }}">Browse the catalog</a> and like some movies to get personalized recommendations.
+        </p>
+    {% endif %}
+{% endblock %}
