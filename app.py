@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
 from flask_migrate import Migrate
 from config import Config
-from models import db, Movie, User
+from models import db, Movie, User, Watchlist
 
 
 app = Flask(__name__)
@@ -16,7 +16,41 @@ def index():
     user_id = session.get('user_id')
     user = User.query.get(user_id) if user_id else None
     movies = Movie.query.order_by(Movie.date.desc().nullslast()).all()
-    return render_template('index.html', user=user, movies=movies)
+
+    # Get user's watchlist movie IDs
+    watchlist_movie_ids = set()
+    if user:
+        watchlist_movie_ids = {w.movie_id for w in user.watchlists}
+
+    return render_template('index.html', user=user, movies=movies, watchlist_movie_ids=watchlist_movie_ids)
+
+
+@app.route('/toggle_watchlist/<int:movie_id>', methods=['POST'])
+def toggle_watchlist(movie_id):
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'error': 'Please login first'}), 401
+
+    user = User.query.get(user_id)
+    movie = Movie.query.get(movie_id)
+
+    if not movie:
+        return jsonify({'error': 'Movie not found'}), 404
+
+    # Check if movie is already in watchlist
+    watchlist_entry = Watchlist.query.filter_by(user_id=user_id, movie_id=movie_id).first()
+
+    if watchlist_entry:
+        # Remove from watchlist
+        db.session.delete(watchlist_entry)
+        db.session.commit()
+        return jsonify({'status': 'removed', 'in_watchlist': False})
+    else:
+        # Add to watchlist
+        new_entry = Watchlist(user_id=user_id, movie_id=movie_id)
+        db.session.add(new_entry)
+        db.session.commit()
+        return jsonify({'status': 'added', 'in_watchlist': True})
 
 
 @app.route('/signup', methods=['GET', 'POST'])

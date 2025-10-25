@@ -1,13 +1,6 @@
 {% extends "base.html" %}
 {% block title %}Movie Catalog{% endblock %}
 {% block content %}
-{#    {% if user %}#}
-{#         <h1>Welcome, {{ user.full_name }}!</h1>#}
-{#        <p><a href="{{ url_for('logout') }}">Logout</a></p>#}
-{#    {% else %}#}
-{#        <p><a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a></p>#}
-{#    {% endif %}#}
-
     <h1>🎬 Movie Catalog</h1>
 
     {% if user %}
@@ -31,6 +24,9 @@
                 <th>Duration (min)</th>
                 <th>Rating</th>
                 <th>Description</th>
+                {% if user %}
+                <th style="width: 60px; text-align: center;">Like</th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -44,6 +40,15 @@
                     <td>{{ movie.duration or '-' }}</td>
                     <td>{{ movie.rating or '-' }}</td>
                     <td>{{ movie.description[:120] ~ ('...' if movie.description|length > 120 else '') }}</td>
+                    {% if user %}
+                    <td style="text-align: center;">
+                        <button class="like-btn {% if movie.id in watchlist_movie_ids %}liked{% endif %}"
+                                data-movie-id="{{ movie.id }}"
+                                onclick="toggleWatchlist({{ movie.id }}, this)">
+                            <span class="heart">❤</span>
+                        </button>
+                    </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>
@@ -51,4 +56,32 @@
     {% else %}
         <p style="text-align: center;">The films are not yet in the database.</p>
     {% endif %}
+
+    <script>
+        function toggleWatchlist(movieId, button) {
+            fetch(`/toggle_watchlist/${movieId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    // Toggle the liked class
+                    if (data.in_watchlist) {
+                        button.classList.add('liked');
+                    } else {
+                        button.classList.remove('liked');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            });
+        }
+    </script>
 {% endblock %}
