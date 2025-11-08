@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify
+import numpy as np
+from flask import Flask, flash, jsonify, redirect, render_template, request, session, url_for
 from flask_migrate import Migrate
-from config import Config
-from models import db, Movie, User, Watchlist
+from sqlalchemy import not_
 
+from config import Config
+from models import Embedding, Movie, User, Watchlist, db
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -110,7 +112,22 @@ def recommendations():
         Movie.date.desc().nullslast()
     ).all()
 
-    return render_template('recommendations.html', user=user, movies=liked_movies)
+    liked_vectors = [np.array(m.embedding.embedding) for m in liked_movies if m.embedding is not None]
+    if liked_vectors:
+        user_vec = np.mean(liked_vectors, axis=0)
+        recom_movies = (
+            db.session.query(Movie)
+            .join(Movie.embedding)
+            .filter(Embedding.embedding.is_not(None))
+            .filter(not_(Movie.id.in_([m.id for m in liked_movies])))
+            .order_by(Embedding.embedding.op('<->')(user_vec))
+            .limit(5)
+            .all()
+        )
+    else:
+        recom_movies = []
+
+    return render_template('recommendations.html', user=user, movies=recom_movies)
 
 
 @app.route('/logout')
@@ -121,4 +138,4 @@ def logout():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(use_reloader=False)
