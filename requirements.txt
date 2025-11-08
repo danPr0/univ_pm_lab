@@ -3,3 +3,5 @@ flask_sqlalchemy
 flask_migrate
 jinja2
 psycopg2-binary
+pgvector
+sentence-transformers
