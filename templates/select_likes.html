@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}Select Liked Movies{% endblock %}
+
+{% block navbar %}
+<nav class="navbar">
+    <ul>
+        <li><a href="{{ url_for('index') }}" class="active">Catalog</a></li>
+        {% if user %}
+        <li><a href="{{ url_for('select_likes') }}">Recommendations</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<h1>Select Movies for Recommendation</h1>
+
+{% if liked_movies %}
+
+<form method="get" class="filter-form">
+    <input type="text" name="name" placeholder="Name" value="{{ filters.name or '' }}">
+    <input type="text" name="year" placeholder="Year" value="{{ filters.year or '' }}">
+    <input type="text" name="director" placeholder="Director" value="{{ filters.director or '' }}">
+    <input type="text" name="studio" placeholder="Studio" value="{{ filters.studio or '' }}">
+    <input type="text" name="duration" placeholder="Duration" value="{{ filters.duration or '' }}">
+    <input type="text" name="rating" placeholder="Rating" value="{{ filters.rating or '' }}">
+    <button type="submit">Filter</button>
+    <a href="{{ url_for('select_likes') }}" class="clear-btn">Clear</a>
+</form>
+
+<form method="post">
+    <div class="actions">
+        <button type="button" id="selectAllBtn">Select All</button>
+        <button type="submit" class="recommend-btn">Recommend</button>
+    </div>
+
+    <table class="movie-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Studio</th>
+                <th>Duration</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in liked_movies %}
+            <tr>
+                <td><input type="checkbox" name="movie_ids" value="{{ movie.id }}"></td>
+                <td>{{ movie.name }}</td>
+                <td>{{ movie.date.year if movie.date else '-' }}</td>
+                <td>{{ movie.director or '-' }}</td>
+                <td>{{ movie.studio or '-' }}</td>
+                <td>{{ movie.duration or '-' }}</td>
+                <td>{{ movie.rating or '-' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</form>
+{% else %}
+<p>You have no liked movies yet.</p>
+{% endif %}
+
+<script>
+    document.getElementById('selectAllBtn').addEventListener('click', function () {
+        const checkboxes = document.querySelectorAll('input[name="movie_ids"]');
+        const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+        checkboxes.forEach(cb => cb.checked = !allChecked);
+        this.textContent = allChecked ? 'Select All' : 'Unselect All';
+    });
+</script>
+
+<style>
+    .filter-form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 15px;
+    }
+
+        .filter-form input {
+            padding: 5px 8px;
+            width: 140px;
+        }
+
+        .filter-form button, .clear-btn {
+            padding: 6px 10px;
+        }
+
+    .actions {
+        margin-bottom: 15px;
+    }
+
+    .recommend-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 6px 12px;
+    }
+</style>
+{% endblock %}

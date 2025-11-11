@@ -1,0 +1,157 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\app.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\movie_genre.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\movie_genre.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\actor.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:models\\actor.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 122,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "requirements.txt",
+              "DocumentMoniker": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\requirements.txt",
+              "RelativeDocumentMoniker": "requirements.txt",
+              "ToolTip": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\requirements.txt",
+              "RelativeToolTip": "requirements.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-10T09:01:49.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "movie_genre.py",
+              "DocumentMoniker": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\movie_genre.py",
+              "RelativeDocumentMoniker": "models\\movie_genre.py",
+              "ToolTip": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\movie_genre.py",
+              "RelativeToolTip": "models\\movie_genre.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-10T01:30:47.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "actor.py",
+              "DocumentMoniker": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\actor.py",
+              "RelativeDocumentMoniker": "models\\actor.py",
+              "ToolTip": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\models\\actor.py",
+              "RelativeToolTip": "models\\actor.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-10T01:28:00.159Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app.py",
+              "DocumentMoniker": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\app.py",
+              "RelativeDocumentMoniker": "app.py",
+              "ToolTip": "D:\\\u043F\u0430\u043F\u043E\u0447\u043A\u0430 \u0441 \u043F\u0430\u043F\u043E\u0447\u043A\u0430\u043C\u0438\\\u043C\u0430\u0433\u0456\u0441\u0442\u0440\u0430\u0442\u0443\u0440\u0430\\\u043C\u0435\u043D\u0435\u0434\u0436\u043C\u0435\u043D\u0442 \u043F\u0440\u043E\u0454\u043A\u0442\u0456\u0432\\\u043F\u0440\u043E\u0454\u043A\u0442\\app.py",
+              "RelativeToolTip": "app.py",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAqwA8BAABsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2025-11-09T12:39:27.889Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedHeight": 278,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:141:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -6,78 +6,102 @@
     <ul>
         <li><a href="{{ url_for('index') }}" class="active">Catalog</a></li>
         {% if user %}
-        <li><a href="{{ url_for('recommendations') }}">Recommendations</a></li>
+        <li><a href="{{ url_for('select_likes') }}">Recommendations</a></li>
         {% endif %}
     </ul>
 </nav>
 {% endblock %}
 
 {% block content %}
-    <h1>🎬 Movie Catalog</h1>
+<h1>🎬 Movie Catalog</h1>
 
     {% if user %}
-        <p class="user-info">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+<p class="user-info">Welcome, {{ user.full_name }} | <a href="{{ url_for('logout') }}">Logout</a></p>
     {% else %}
-        <p class="user-info">
-            <a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a> to save your
-            favorites.
-        </p>
+<p class="user-info">
+    <a href="{{ url_for('login') }}">Sign In</a> or <a href="{{ url_for('signup') }}">Sign Up</a> to save your
+    favorites.
+</p>
     {% endif %}
+
+<form method="get" class="filter-form">
+    <input type="text" name="name" placeholder="Name" value="{{ filters.name }}">
+    <input type="text" name="year" placeholder="Year" value="{{ filters.year }}">
+    <input type="text" name="director" placeholder="Director" value="{{ filters.director }}">
+    <input type="text" name="studio" placeholder="Studio" value="{{ filters.studio }}">
+    <input type="text" name="rating" placeholder="Rating" value="{{ filters.rating }}">
+    <button type="submit">Filter</button>
+    <a href="{{ url_for('index') }}" class="reset-btn">Reset</a>
+
+    {% if user %}
+    <label class="liked-only">
+        <input type="checkbox" name="liked_only" value="true" onchange="this.form.submit()" {% if filters.liked_only %}checked{% endif %}>
+        ❤️ Liked only
+    </label>
+    {% endif %}
+</form>
 
     {% if movies %}
-        <table class="movie-table">
-            <thead>
-            <tr>
-{#                <th>ID</th>#}
-                <th>Name</th>
-                <th>Year</th>
-                <th>Director</th>
-                <th>Studio</th>
-                <th>Duration (min)</th>
-                <th>Rating</th>
-                <th>Description</th>
-                {% if user %}
-                <th style="width: 60px; text-align: center;">Like</th>
-                {% endif %}
-            </tr>
-            </thead>
-            <tbody>
-            {% for movie in movies %}
-                <tr>
-{#                    <td>{{ movie.id }}</td>#}
-                    <td>{{ movie.name }}</td>
-                    <td>{{ movie.date.year if movie.date else '' }}</td>
-                    <td>{{ movie.director or '-' }}</td>
-                    <td>{{ movie.studio or '-' }}</td>
-                    <td>{{ movie.duration or '-' }}</td>
-                    <td>{{ movie.rating or '-' }}</td>
-{#                    <td>{{ movie.description[:120] ~ ('...' if movie.description|length > 120 else '') }}</td>#}
-                    <td class="movie-table__description-cell">{{ movie.description }}</td>
-                    {% if user %}
-                    <td style="text-align: center;">
-                        <button class="like-btn {% if movie.id in watchlist_movie_ids %}liked{% endif %}"
-                                data-movie-id="{{ movie.id }}"
-                                onclick="toggleWatchlist({{ movie.id }}, this)">
-                            <span class="heart">❤</span>
-                        </button>
-                    </td>
-                    {% endif %}
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p class="empty-state">The films are not yet in the database.</p>
-    {% endif %}
+<table class="movie-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Director</th>
+            <th>Studio</th>
+            <th>Duration (min)</th>
+            <th>Rating</th>
+            <th>Description</th>
+            {% if user %}
+            <th style="width: 60px; text-align: center;">Like</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie.name }}</td>
+            <td>{{ movie.date.year if movie.date else '' }}</td>
+            <td>{{ movie.director or '-' }}</td>
+            <td>{{ movie.studio or '-' }}</td>
+            <td>{{ movie.duration or '-' }}</td>
+            <td>{{ movie.rating or '-' }}</td>
+            <td class="movie-table__description-cell">{{ movie.description }}</td>
+            {% if user %}
+            <td style="text-align: center;">
+                <button class="like-btn {% if movie.id in watchlist_movie_ids %}liked{% endif %}"
+                        data-movie-id="{{ movie.id }}"
+                        onclick="toggleWatchlist({{ movie.id }}, this)">
+                    <span class="heart">❤</span>
+                </button>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
-    <script>
-        function toggleWatchlist(movieId, button) {
-            fetch(`/toggle_watchlist/${movieId}`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            })
+<div class="pagination">
+    {% if pagination.has_prev %}
+    <a href="{{ url_for('index', page=pagination.prev_num, **filters) }}">&laquo; Prev</a>
+    {% endif %}
+    <span>Page {{ pagination.page }} of {{ pagination.pages }}</span>
+    {% if pagination.has_next %}
+    <a href="{{ url_for('index', page=pagination.next_num, **filters) }}">Next &raquo;</a>
+    {% endif %}
+</div>
+{% else %}
+<p class="empty-state">The films are not yet in the database.</p>
+{% endif %}
+
+<script>
+    function toggleWatchlist(movieId, button) {
+        fetch(`/toggle_watchlist/${movieId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
@@ -95,6 +119,6 @@
                 console.error('Error:', error);
                 alert('An error occurred. Please try again.');
             });
-        }
-    </script>
+    }
+</script>
 {% endblock %}
